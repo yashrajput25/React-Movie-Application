@@ -4,7 +4,7 @@ import Search from "./Components/Search";
 
 const App = ()=>{
 
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState('');
 
   return (
 
@@ -19,7 +19,7 @@ const App = ()=>{
             <h1>Find <span className="text-gradient">Movies</span> You'll Enjoy Without the Hassle</h1>
           </header>
 
-          <Search searchTerm = {searchTerm} setSearchTerms={setSearchTerm}></Search>
+          <Search searchTerm = {searchTerm} setSearchTerm={setSearchTerm}></Search>
           
         </div>
 
