@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Search from "./Components/Search";
+import Loader from "./Components/Loader";
 
 const API_BASE_URL = 'https://api.themoviedb.org/3';
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
@@ -15,8 +16,14 @@ const API_OPTIONS = {
 const DisplayMovieComponent = ({isloading, errorMessage, movieList}) => {
 
     if(isloading){
-
-      return <p className="text-white">Loading...</p>
+      
+      return (
+        <div>
+            <Loader/>
+            <p className="text-white">Loading...</p>
+        </div>
+      )
+      
 
     }else{
 
@@ -79,14 +86,14 @@ const App = ()=>{
         <div className = "wrapper">
           
           <header>
-            <img src="./logo.png" alt="Logo Image" />
+            <img src="./logo.png" alt="Logo Image" className="w-[100px] h-[100px] mb-10" />
             <img className="mb-16" src="./hero.png" alt="Hero Banner" />
             <h1>Find <span className="text-gradient">Movies</span> You'll Enjoy Without the Hassle</h1>
             <Search searchTerm = {searchTerm} setSearchTerm={setSearchTerm}></Search>
           </header>
 
           <section className="all-movies">
-            <h2>All movies</h2>
+            <h2 className="mt-10">All movies</h2>
 
             <div>
                 <DisplayMovieComponent 
