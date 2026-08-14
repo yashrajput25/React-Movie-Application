@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Search from "./Components/Search";
 import Loader from "./Components/Loader";
+import MovieCard from "./Components/MovieCard";
 
 const API_BASE_URL = 'https://api.themoviedb.org/3';
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
@@ -23,8 +24,6 @@ const DisplayMovieComponent = ({isloading, errorMessage, movieList}) => {
             <p className="text-white">Loading...</p>
         </div>
       )
-      
-
     }else{
 
         if(errorMessage != null){
@@ -32,7 +31,9 @@ const DisplayMovieComponent = ({isloading, errorMessage, movieList}) => {
         }else{
           return (<ul>
             {movieList.map((movie)=>{
-                return <p key={movie.id} className="text-white">{movie.title}</p>
+                return (
+                  <MovieCard key = {movie.id} movie = {movie}/>
+                );
         })
             }
           </ul>);
@@ -94,13 +95,11 @@ const App = ()=>{
 
           <section className="all-movies">
             <h2 className="mt-10">All movies</h2>
-
-            <div>
                 <DisplayMovieComponent 
                 isloading={isloading} 
                 movieList={movieList} 
                 errorMessage={errorMessage}/>
-            </div>
+  
           </section>
 
         </div>
